@@ -1,0 +1,91 @@
+.navbar {
+  transition: 1s;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar:hover{
+  transition: 1.5s;
+  background-color: red;
+}
+
+.navbar-logo h2 {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a, .dropbtn {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.navbar-links a:hover, .dropbtn:hover {
+  color: #61dafb;
+}
+
+
+.dropdown {
+  position: relative; 
+}
+
+.dropdown-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.9s ease-in-out;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  position: absolute;
+  top: 40px; 
+  left: 0; 
+  min-width: 160px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.dropdown-content.open {
+  max-height: 200px; 
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  transition: 1s;
+  background-color: #f1f1f1;
+  box-shadow: 4px 8px 9px #333;
+}
+
+
+.navbar-links a span {
+  color: orange; 
+  font-weight: bold;
+}
+
+.zapato{
+  font-size: 1.5rem;
+}

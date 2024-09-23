@@ -6,6 +6,25 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App-header {
+  background-color: #282c34;
+  padding: 10px 20px; /* Reducimos el padding (antes era 20px) */
+  color: white;
+  margin-bottom: 10px; /* Puedes ajustar esto para controlar el espacio debajo */
+  text-align: center;
+}
+
+.App-header h1 {
+  font-size: 2rem; /* Puedes ajustar este tamaño si lo prefieres más pequeño */
+  margin: 10px 0; /* Esto ajusta el espacio arriba y abajo del h1 */
+}
+
+.App-header p {
+  font-size: 1rem;
+  margin: 5px 0; /* Reduce el espacio debajo del párrafo */
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -15,7 +34,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 15rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +54,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.App-content {
+  padding-top: 70px; /* Para compensar el tamaño del navbar */
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth; /* Para una experiencia de scroll suave */
 }

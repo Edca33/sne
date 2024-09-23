@@ -1,0 +1,48 @@
+.shoe-detail {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+.shoe-detail img {
+  width: 100%;
+  margin-top: 55px;
+  border-radius: 10px;
+}
+
+.shoe-detail h2 {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.shoe-detail p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.quantity-controls button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 0 10px;
+}
+
+.quantity-controls button:hover {
+  background-color: #e5533d;
+}
+
+.quantity-controls span {
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
