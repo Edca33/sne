@@ -28,13 +28,13 @@ const shoes = [
     id: 5,
     name: 'Adidas Ultraboost 21',
     price: '$180',
-    image: 'https://via.placeholder.com/200x150',
+    image: 'https://http2.mlstatic.com/D_NQ_NP_694214-MCO53751923035_022023-O.webp',
 },
 {
     id: 6,
     name: 'Puma RS-X',
     price: '$110',
-    image: 'https://via.placeholder.com/200x150',
+    image: 'https://http2.mlstatic.com/D_NQ_NP_997395-MCO74963226050_032024-O.webp',
 },
 {
   id: 7,

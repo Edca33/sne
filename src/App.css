@@ -1,3 +1,4 @@
+/* Estilos generales de la aplicación */
 .App {
   text-align: center;
 }
@@ -6,25 +7,24 @@
   height: 40vmin;
   pointer-events: none;
 }
+
 .App-header {
   background-color: #282c34;
-  padding: 10px 20px; /* Reducimos el padding (antes era 20px) */
+  padding: 10px 20px; /* Reducimos el padding */
   color: white;
-  margin-bottom: 10px; /* Puedes ajustar esto para controlar el espacio debajo */
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .App-header h1 {
   font-size: 2rem; /* Puedes ajustar este tamaño si lo prefieres más pequeño */
-  margin: 10px 0; /* Esto ajusta el espacio arriba y abajo del h1 */
+  margin: 10px 0;
 }
 
 .App-header p {
   font-size: 1rem;
   margin: 5px 0; /* Reduce el espacio debajo del párrafo */
 }
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -56,19 +56,11 @@
   }
 }
 
-
 .App-content {
   padding-top: 70px; /* Para compensar el tamaño del navbar */
   padding: 20px;
   min-height: 100vh;
   background-color: #f1f1f1;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  margin-bottom: 20px;
 }
 
 body {
@@ -78,4 +70,112 @@ body {
 
 html {
   scroll-behavior: smooth; /* Para una experiencia de scroll suave */
+}
+
+/* Estilos para el perfil y configuraciones */
+
+/* Perfil container */
+.perfil-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info, .user-settings {
+  margin-bottom: 20px;
+}
+
+.user-info p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.user-info label {
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.user-info input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.config-item {
+  margin-bottom: 15px;
+}
+
+.change-password input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .perfil-container {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode button {
+  background-color: #3f51b5;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+body.dark-mode .App-header {
+  background-color: #333333;
+}
+
+.App-content {
+  background-color: #f1f1f1;
+}
+
+body.dark-mode .App-content {
+  background-color: #181818;
+}
+
+body.dark-mode .user-info input, 
+body.dark-mode .change-password input {
+  background-color: #333;
+  color: #fff;
+  border-color: #444;
 }

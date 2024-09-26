@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../navbar.css';
 import { GiRunningShoe } from "react-icons/gi";
+import { FaUser } from "react-icons/fa";
 
-function Navbar({ cartItemCount, setSelectedBrand }) {
+function Navbar({ cartItemCount, setSelectedBrand, user }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -26,9 +27,20 @@ function Navbar({ cartItemCount, setSelectedBrand }) {
             <Link onClick={() => setSelectedBrand('Converse')}>Converse</Link>
             <Link onClick={() => setSelectedBrand('Adidas')}>Adidas</Link>
             <Link onClick={() => setSelectedBrand('Vans')}>Vans</Link>
+            <Link onClick={() => setSelectedBrand('Puma')}>Puma</Link>
           </div>
         </li>
         <li><Link to="/cart"><GiRunningShoe className='zapato'/>{cartItemCount > 0 && <span>({cartItemCount})</span>}</Link></li>
+        {!user ? (
+          <>
+            <center><li><Link to="/register">Registrarse</Link></li></center>
+          </>
+        ) : (
+          <>
+            <Link to={"/perfil"} style={{color: "white"}}>Bienvenido, {user.username} <FaUser/></Link> 
+            
+          </>
+        )}
       </ul>
     </nav>
   );
