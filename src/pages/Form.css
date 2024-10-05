@@ -54,7 +54,7 @@
   }
   
 
-@media (max-width: 425px) {
+@media (max-width: 390px) {
     .form-container {
       width: 90%;
       padding: 55px; 

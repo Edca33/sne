@@ -54,6 +54,13 @@ const shoes = [
   price: '$160',
   image: 'https://prochampions.vtexassets.com/arquivos/ids/633542/Nike-Nike-React-Infinity-Run-Fk-3-Tenis_DH5392-102_02.jpg?v=638065505900730000',
 },
+{
+  id: 10,
+  name: 'Adidas Tenis NMD',
+  price: '$160',
+  image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0fd9bc2bfc234ce0b69aaef900fddbdf_9366/Tenis_NMD_R1_Negro_HQ4452_01_standard.jpg',
+},
+
   ];
   
   export default shoes;

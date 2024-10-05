@@ -1,31 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import "./Perfil.css"
 
-function Perfil({ user, setUser }) {
+function Perfil({ user, setUser, notificationsEnabled, setNotificationsEnabled }) {
   const [editMode, setEditMode] = useState(false);
   const [userData, setUserData] = useState({
     username: user ? user.username : '',
     email: user ? user.email : '',
     password: ''
   });
-  const [darkMode, setDarkMode] = useState(false); 
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true); 
+  const [darkMode, setDarkMode] = useState(false);
   const [showPasswordChange, setShowPasswordChange] = useState(false);
 
   useEffect(() => {
-    
     const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
     if (savedDarkMode !== null) {
       setDarkMode(savedDarkMode);
       document.body.classList.toggle('dark-mode', savedDarkMode);
     }
-
-    
     const savedNotifications = JSON.parse(localStorage.getItem('notificationsEnabled'));
     if (savedNotifications !== null) {
       setNotificationsEnabled(savedNotifications);
     }
-  }, []);
+  }, [setNotificationsEnabled]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,14 +48,13 @@ function Perfil({ user, setUser }) {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
     document.body.classList.toggle('dark-mode', newDarkMode);
-    localStorage.setItem('darkMode', JSON.stringify(newDarkMode)); 
+    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
   };
 
   const toggleNotifications = () => {
     const newNotificationsEnabled = !notificationsEnabled;
     setNotificationsEnabled(newNotificationsEnabled);
     localStorage.setItem('notificationsEnabled', JSON.stringify(newNotificationsEnabled));
-    alert(newNotificationsEnabled ? "Notificaciones habilitadas" : "Notificaciones deshabilitadas");
   };
 
   return (
@@ -101,20 +95,17 @@ function Perfil({ user, setUser }) {
 
       <div className="user-settings">
         <h3>Configuraciones</h3>
-
-        
         <div className="config-item">
           <label>
             <input 
-              type="checkbox" 
+              type="button" 
               checked={darkMode} 
               onChange={toggleDarkMode} 
             />
-            Modo Oscuro
+             {darkMode ? "Desactivar Modo Oscuro" : "Activar Modo Oscuro"}
           </label>
         </div>
 
-        
         <div className="config-item">
           <label>
             <input 
@@ -122,14 +113,13 @@ function Perfil({ user, setUser }) {
               checked={notificationsEnabled} 
               onChange={toggleNotifications} 
             />
-            Habilitar Notificaciones
+              {notificationsEnabled ? "Deshabilitar Notificaciones" : "Habilitar Notificaciones"}
           </label>
         </div>
 
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </div>
 
-      
       {showPasswordChange && (
         <div className="change-password">
           <label>Nueva contraseña:</label>

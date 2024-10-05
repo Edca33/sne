@@ -5,10 +5,18 @@ import { GiRunningShoe } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 
 function Navbar({ cartItemCount, setSelectedBrand, user }) {
+  const [darkMode, setDarkMode] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    document.body.classList.toggle('dark-mode', newDarkMode);
+    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+  };
+
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);  
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
@@ -19,7 +27,7 @@ function Navbar({ cartItemCount, setSelectedBrand, user }) {
       <ul className="navbar-links">
         <li><Link to="/">Inicio</Link></li>
         <li className="dropdown">
-          <button className="dropbtn" onClick={toggleDropdown}>
+          <button className="dropbtn" style={{}} onClick={toggleDropdown}>
             Categorías
           </button>
           <div className={`dropdown-content ${dropdownOpen ? 'open' : ''}`}>
@@ -30,17 +38,29 @@ function Navbar({ cartItemCount, setSelectedBrand, user }) {
             <Link onClick={() => setSelectedBrand('Puma')}>Puma</Link>
           </div>
         </li>
-        <li><Link to="/cart"><GiRunningShoe className='zapato'/>{cartItemCount > 0 && <span>({cartItemCount})</span>}</Link></li>
         {!user ? (
           <>
             <center><li><Link to="/register">Registrarse</Link></li></center>
           </>
         ) : (
           <>
-            <Link to={"/perfil"} style={{color: "white"}}>Bienvenido, {user.username} <FaUser/></Link> 
-            
+            <Link to={"/perfil"} style={{ color: "white" }}>Bienvenido, {user.username} <FaUser /></Link>
+
           </>
         )}
+        <div className="user-settings">
+          <div className="config-item">
+            <label style={{ color: 'white' }}>
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={toggleDarkMode}
+              />
+              {darkMode ? "Desactivar Modo Oscuro" : "Activar Modo Oscuro"}
+            </label>
+          </div>
+        </div>
+        <li><Link to="/cart"><GiRunningShoe className='zapato' />{cartItemCount > 0 && <span>({cartItemCount})</span>}</Link></li>
       </ul>
     </nav>
   );

@@ -8,7 +8,7 @@
 
   .shoe-item:hover{
     transition: 1s;
-    box-shadow: 0 4px 8px 10px green;
+    box-shadow: 0 4px 8px 10px rgb(235, 2, 41);
   }
   
   .shoe-item {

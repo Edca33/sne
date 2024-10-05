@@ -1,4 +1,4 @@
-/* Estilos generales de la aplicación */
+
 .App {
   text-align: center;
 }
@@ -10,20 +10,20 @@
 
 .App-header {
   background-color: #282c34;
-  padding: 10px 20px; /* Reducimos el padding */
+  padding: 10px 20px; 
   color: white;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .App-header h1 {
-  font-size: 2rem; /* Puedes ajustar este tamaño si lo prefieres más pequeño */
+  font-size: 2rem; 
   margin: 10px 0;
 }
 
 .App-header p {
   font-size: 1rem;
-  margin: 5px 0; /* Reduce el espacio debajo del párrafo */
+  margin: 5px 0; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -57,7 +57,7 @@
 }
 
 .App-content {
-  padding-top: 70px; /* Para compensar el tamaño del navbar */
+  padding-top: 70px; 
   padding: 20px;
   min-height: 100vh;
   background-color: #f1f1f1;
@@ -69,12 +69,66 @@ body {
 }
 
 html {
-  scroll-behavior: smooth; /* Para una experiencia de scroll suave */
+  scroll-behavior: smooth; 
 }
 
-/* Estilos para el perfil y configuraciones */
 
-/* Perfil container */
+.shoe-item {
+  background-color: #ffffff; 
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.shoe-item  h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.shoe-item  p {
+  color: #555;
+}
+
+.shoe-item  button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shoe-item  button:hover {
+  background-color: #2980b9;
+}
+
+
+body.dark-mode .shoe-item {
+  background-color: #0000; 
+  border: 1px solid #444; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+body.dark-mode .shoe-item h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .shoe-item p {
+  color: #cccccc; 
+}
+
+body.dark-mode .shoe-item button {
+  background-color: #3f51b5; 
+}
+
+body.dark-mode .shoe-item button:hover {
+  background-color: #2c3e8e; 
+}
+
+
 .perfil-container {
   width: 80%;
   margin: 0 auto;
@@ -140,7 +194,7 @@ button:hover {
   border-radius: 4px;
 }
 
-/* Estilos para el modo oscuro */
+
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -178,4 +232,23 @@ body.dark-mode .change-password input {
   background-color: #333;
   color: #fff;
   border-color: #444;
+}
+
+body.dark-mode .navbar:hover{
+background-color: #2c3e8e;
+}
+
+
+
+@media (max-width: 390px){
+  .App-header{
+    max-height: 390px;
+    font-size: small;
+    width: max-content;
+  }
+  .navbar-links{
+    max-width: 390px;
+    height: min-content;
+    align-items: center;
+  }
 }

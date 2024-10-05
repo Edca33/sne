@@ -18,9 +18,10 @@ function App() {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [user, setUser] = useState(null);
   const [notification, setNotification] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true); // Estado para notificaciones
 
-
+  // Simulamos la carga de datos del usuario y el carrito
   useEffect(() => {
     setTimeout(() => {
       const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -32,9 +33,15 @@ function App() {
       if (savedCart) {
         setCart(savedCart);
       }
-      
-      setIsLoading(false); 
-    }, 2000); 
+
+      // Cargar preferencia de notificaciones desde localStorage
+      const savedNotifications = JSON.parse(localStorage.getItem('notificationsEnabled'));
+      if (savedNotifications !== null) {
+        setNotificationsEnabled(savedNotifications);
+      }
+
+      setIsLoading(false); // Dejar de mostrar el spinner después de la carga
+    }, 2000);
   }, []);
 
   const addToCart = (shoe, quantity) => {
@@ -47,7 +54,10 @@ function App() {
       setCart([...cart, { ...shoe, quantity }]);
     }
 
-    setNotification({ message: `${shoe.name} agregado al carrito`, type: 'success' });
+    // Mostrar notificación solo si las notificaciones están habilitadas
+    if (notificationsEnabled) {
+      setNotification({ message: `${shoe.name} agregado al carrito`, type: 'success' });
+    }
   };
 
   const removeFromCart = (id) => {
@@ -57,14 +67,19 @@ function App() {
       
       if (confirmRemoval) {
         setCart(cart.filter(item => item.id !== id));
-        setNotification({ message: `${item.name} eliminado del carrito`, type: 'warning' });
+
+        if (notificationsEnabled) {
+          setNotification({ message: `${item.name} eliminado del carrito`, type: 'warning' });
+        }
       }
     }
   };
 
   const clearCart = () => {
     setCart([]);
-    setNotification({ message: 'Carrito vaciado', type: 'error' });
+    if (notificationsEnabled) {
+      setNotification({ message: 'Carrito vaciado', type: 'error' });
+    }
   };
 
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
@@ -72,6 +87,7 @@ function App() {
   const removeNotification = () => {
     setNotification(null);
   };
+
 
   return (
     <Router>
@@ -89,7 +105,8 @@ function App() {
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/perfil" element={<Perfil user={user} setUser={setUser} />} />
+            <Route path="/perfil" element={<Perfil user={user} setUser={setUser}     notificationsEnabled={notificationsEnabled} 
+    setNotificationsEnabled={setNotificationsEnabled} />} />
           </Routes>
         )}
       </div>
