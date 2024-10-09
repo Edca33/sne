@@ -34,12 +34,3 @@ button:hover {
 }
 
 
-.input-blur:hover{
-    transition: 1s;
-    filter: blur(2px);
-}
-
-.input-blur2:hover{
-    transition: 1s;
-    filter: blur(2px);
-}

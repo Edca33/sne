@@ -19,9 +19,26 @@ function App() {
   const [user, setUser] = useState(null);
   const [notification, setNotification] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true); // Estado para notificaciones
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [darkMode, setDarkMode] = useState(false); 
 
-  // Simulamos la carga de datos del usuario y el carrito
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    console.log('Toggling dark mode:', newDarkMode);
+    setDarkMode(newDarkMode);
+    document.body.classList.toggle('dark-mode', newDarkMode); // Asegúrate de que esta línea aplique correctamente la clase
+    localStorage.setItem('dark-mode', JSON.stringify(newDarkMode)); // Guardar preferencia
+  };
+
+
+  useEffect(() => {
+    const savedDarkMode = JSON.parse(localStorage.getItem('dark-mode'));
+    if (savedDarkMode !== null) {
+      setDarkMode(savedDarkMode);
+      document.body.classList.toggle('dark-mode', savedDarkMode); 
+    }
+  }, []);
+  
   useEffect(() => {
     setTimeout(() => {
       const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -34,13 +51,13 @@ function App() {
         setCart(savedCart);
       }
 
-      // Cargar preferencia de notificaciones desde localStorage
+      
       const savedNotifications = JSON.parse(localStorage.getItem('notificationsEnabled'));
       if (savedNotifications !== null) {
         setNotificationsEnabled(savedNotifications);
       }
 
-      setIsLoading(false); // Dejar de mostrar el spinner después de la carga
+      setIsLoading(false); 
     }, 2000);
   }, []);
 
@@ -54,7 +71,7 @@ function App() {
       setCart([...cart, { ...shoe, quantity }]);
     }
 
-    // Mostrar notificación solo si las notificaciones están habilitadas
+    
     if (notificationsEnabled) {
       setNotification({ message: `${shoe.name} agregado al carrito`, type: 'success' });
     }
@@ -91,22 +108,21 @@ function App() {
 
   return (
     <Router>
-      <Navbar cartItemCount={cartItemCount} user={user} setSelectedBrand={setSelectedBrand} />
+      <Navbar cartItemCount={cartItemCount} user={user} setSelectedBrand={setSelectedBrand}  darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <div className="App-content">
         {isLoading ? (
           <LoadingSpinner />
         ) : (
           <Routes>
-            <Route path="/" element={<Home selectedBrand={selectedBrand} />} />
+            <Route path="/" element={<Home selectedBrand={selectedBrand} user={user}  darkMode={darkMode} />}/>
             <Route path="/shoe/:id" element={<ShoeDetail addToCart={addToCart} />} />
             <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} clearCart={clearCart} />} />
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/perfil" element={<Perfil user={user} setUser={setUser}     notificationsEnabled={notificationsEnabled} 
-    setNotificationsEnabled={setNotificationsEnabled} />} />
+            <Route path="/perfil" element={<Perfil user={user} setUser={setUser} notificationsEnabled={notificationsEnabled} setNotificationsEnabled={setNotificationsEnabled} />} />
           </Routes>
         )}
       </div>

@@ -4,16 +4,10 @@ import '../../navbar.css';
 import { GiRunningShoe } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 
-function Navbar({ cartItemCount, setSelectedBrand, user }) {
-  const [darkMode, setDarkMode] = useState(false);
+function Navbar({ cartItemCount, setSelectedBrand, user,  darkMode, toggleDarkMode   }) {
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    document.body.classList.toggle('dark-mode', newDarkMode);
-    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
-  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -44,7 +38,7 @@ function Navbar({ cartItemCount, setSelectedBrand, user }) {
           </>
         ) : (
           <>
-            <Link to={"/perfil"} style={{ color: "white" }}>Bienvenido, {user.username} <FaUser /></Link>
+            <Link to={"/perfil"} className='navbar-user' style={{ color: "white" }}>Bienvenido, {user.username} <FaUser /></Link>
 
           </>
         )}
